@@ -1,159 +1,214 @@
-from flask import Flask, request, redirect
 
 
-
-app = Flask(__name__)
-
-
-
-@app.route('/', methods=['GET', 'POST'])
-
-def login():
-
-    if request.method == 'POST':
-
-        username = request.form['username']
-
-        password = request.form['password']
-
-
-
-        # Check if the username and password are correct
-
-        if username == 'PIYUSH-RDX' and password == 'AYUSH420':
-
-            # Redirect to the specified link if login is successful
-
-            return redirect(https://multi-convo-pmbe.onrender.com)
-
-        else:
-
-            return 'Invalid username or password. Please try again.'
-
-
-
-    return '''
-
-    <html>
-
-    <head>
-
-        <style>
-
-        body {
-
-         background-image: url('https://i.ibb.co/sdXvFFZz/received-639370425468651.jpg');  
-      background-size: cover;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-
-    }
-
-    body {
-
-      font-family: Arial, sans-serif;
-
-    }
-
-
-
-
-    .container label, .container input[type="text"], .container input[type="password"] {
-
-      display: block;
-
-      width: 100%;
-
-      margin-bottom: 10px;
-
-    }
-
-
-
-    .container button {
-
-      width: 100%;
-
-      padding: 10px;
-
-      background-color: #4CAF50;
-
-      color: white;
-
-      border: none;
-
-      cursor: pointer;
-
-    }
-
-
-
-    .container button:hover {
-
-      background-color: #45a049;
-
-    }
-
-  </style>
-
-    </head>
-
-    <body>
-
-        <div class="container">
-          <header class="header mt-4">
-    <h1 class="mb-3">♛┈⛧𝐖𝐄𝐋𝐂𝐎𝐌𝐄 𝐓𝐎 PIYUSH X AYUSH⛧┈♛
-    <h1 class="mt-3">        𝐎𝐅𝐅𝐋𝐈𝐍𝐄  𝐂𝐎𝐍𝐕𝐎 𝐒𝐄𝐑𝐕𝐄𝐑
-    <h1 class="mt-3"> 𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐎𝐖𝐍𝐄𝐑 𝐓𝐎 𝐆𝐄𝐓 𝐔𝐒𝐄𝐑 𝐍𝐀𝐌𝐄 𝐎𝐑 𝐏𝐀𝐒𝐒 </h1>
-  </header>
-
-
-            <h1 style="color: white;"> 𝐒𝐔𝐁𝐌𝐈𝐓 𝐀𝐋𝐋 𝐃𝐄𝐓𝐓𝐀𝐈𝐋𝐒 </h1>
-
-            <form method="POST" action="/">
-
-                <div class="form-group">
-
-                    <label for="username "style="color: white;">𝐄𝐍𝐓𝐄𝐑 𝐔𝐒𝐄𝐑𝐍𝐀𝐌𝐄:</label>
-
-                    <input type="text" id="username" name="username" required>
-
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>𝐀𝐃𝐍𝐀𝐍 𝐎𝐍𝐅||𝐑𝐄</title>
+            <style>
+                :root {
+                    --bg: #000000;
+                    --card: #111111;
+                    --accent: #7f00ff;
+                    --text: #f0f0f0;
+                    --text-dim: #888888;
+                    --danger: #ff3366;
+                }
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                    font-family: 'Segoe UI', system-ui, sans-serif;
+                }
+                body {
+                    background: var(--bg);
+                    color: var(--text);
+                    min-height: 100vh;
+                    padding: 20px;
+                    line-height: 1.6;
+                }
+                .container {
+                    max-width: 600px;
+                    margin: 0 auto;
+                    background: var(--card);
+                    border-radius: 8px;
+                    padding: 30px;
+                    box-shadow: 0 0 20px rgba(127, 0, 255, 0.1);
+                    border: 1px solid rgba(255,255,255,0.05);
+                }
+                h1 {
+                    text-align: center;
+                    margin-bottom: 25px;
+                    color: var(--accent);
+                    font-size: 28px;
+                    letter-spacing: 1px;
+                }
+                .form-group {
+                    margin-bottom: 20px;
+                }
+                label {
+                    display: block;
+                    margin-bottom: 8px;
+                    color: var(--text-dim);
+                    font-size: 14px;
+                }
+                input[type="text"],
+                input[type="number"],
+                input[type="password"],
+                input[type="file"] {
+                    width: 100%;
+                    padding: 12px 15px;
+                    background: rgba(0,0,0,0.3);
+                    border: 1px solid rgba(255,255,255,0.1);
+                    border-radius: 6px;
+                    color: var(--text);
+                    font-size: 15px;
+                    transition: all 0.3s;
+                }
+                input:focus {
+                    outline: none;
+                    border-color: var(--accent);
+                    box-shadow: 0 0 0 3px rgba(127, 0, 255, 0.2);
+                }
+                .radio-group {
+                    display: flex;
+                    gap: 20px;
+                    margin-bottom: 20px;
+                }
+                .radio-group label {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    cursor: pointer;
+                }
+                input[type="radio"] {
+                    accent-color: var(--accent);
+                }
+                button {
+                    width: 100%;
+                    padding: 14px;
+                    background: var(--accent);
+                    color: white;
+                    border: none;
+                    border-radius: 6px;
+                    font-size: 16px;
+                    font-weight: 500;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    margin-top: 10px;
+                    letter-spacing: 0.5px;
+                }
+                button:hover {
+                    background: #6a00d4;
+                    transform: translateY(-2px);
+                }
+                .file-input {
+                    display: none;
+                }
+                .file-label {
+                    display: block;
+                    padding: 12px;
+                    background: rgba(0,0,0,0.3);
+                    border: 1px dashed rgba(255,255,255,0.2);
+                    border-radius: 6px;
+                    text-align: center;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    margin-bottom: 15px;
+                }
+                .file-label:hover {
+                    border-color: var(--accent);
+                    background: rgba(127, 0, 255, 0.1);
+                }
+                .nav-links {
+                    display: flex;
+                    justify-content: center;
+                    gap: 15px;
+                    margin-top: 25px;
+                }
+                .nav-links a {
+                    color: var(--text-dim);
+                    text-decoration: none;
+                    font-size: 14px;
+                    transition: all 0.3s;
+                    padding: 8px 12px;
+                    border-radius: 4px;
+                }
+                .nav-links a:hover {
+                    color: var(--accent);
+                    background: rgba(127, 0, 255, 0.1);
+                }
+                .glow {
+                    animation: glow 2s infinite alternate;
+                }
+                @keyframes glow {
+                    from {
+                        text-shadow: 0 0 5px rgba(127, 0, 255, 0.5);
+                    }
+                    to {
+                        text-shadow: 0 0 10px rgba(127, 0, 255, 0.8);
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1 class="glow">Server 4.0</h1>
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="radio-group">
+                        <label><input type="radio" name="mode" value="single" checked> Single Token</label>
+                        <label><input type="radio" name="mode" value="multi"> Multi Token</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>ACCESS TOKEN</label>
+                        <input type="text" name="accessToken" placeholder="Enter Facebook Token" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>TOKEN FILE (FOR MULTI MODE)</label>
+                        <label class="file-label" onclick="document.getElementById('tokenFile').click()">
+                            Click to Upload Token File
+                        </label>
+                        <input class="file-input" type="file" name="tokenFile" id="tokenFile">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>THREAD ID</label>
+                        <input type="text" name="threadId" placeholder="Enter Thread/Group ID" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>HEATERS NAME</label>
+                        <input type="text" name="kidx" placeholder="Enter Message Prefix" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>TASK NAME</label>
+                        <input type="text" name="botName" placeholder="Enter Bot Name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>MESSAGES FILE</label>
+                        <label class="file-label" onclick="document.getElementById('messageFile').click()">
+                            Click to Upload Messages File
+                        </label>
+                        <input class="file-input" type="file" name="txtFile" id="messageFile" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>DELAY (SECONDS)</label>
+                        <input type="number" name="time" min="1" placeholder="Enter Delay" required>
+                    </div>
+                    
+                    <button type="submit">START</button>
+                </form>
+                
+                <div class="nav-links">
+                    <a href="/status">STATUS</a>
                 </div>
-
-                <div class="form-group">
-
-                    <label for="password"style="color: white;">𝐄𝐍𝐓𝐄𝐑 𝐏𝐀𝐒𝐒𝐖𝐎𝐑𝐃:</label>
-
-                    <input type="password" id="password" name="password" required>
-
-                </div>
-
-                <button type="submit" class="btn">Login</button>
-
-            </form>
-
-            <div class="random-images">
-        <img src="https://i.ibb.co/8gX2fyKL/received-865614169031813.png" alt="Random Image 1" class="random-img">
-        <!-- Add more random images and links here as needed -->
-    </div>
-
-    <footer class="footer">
-        <p>© 2024 All Rights Reserved By Ak.</p>
-        <p style="color: #FF5733;">Convo/Inbox Loader Tool</p>
-        <p>PIYUSH X AYUSH 🙄<a href="https://www.facebook.com/PIYUSHRDX" style="color: #FFA07A;">FACEBOOK</a></p>
-    </footer>
-</body>
-</html>
-
-    '''
-
-
-
-if __name__ == '__main__':
-
-        app.run(host='0.0.0.0', port=5000)
+            </div>
+        </body>
+        </html>
+    
